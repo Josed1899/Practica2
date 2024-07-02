@@ -1,0 +1,50 @@
+﻿@model List<Practica2.BaseDatos.Vehiculos>
+
+@{
+    ViewBag.Title = "ConsultarVehiculos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<div class="row justify-content-center">
+    <div class="col-5">
+        <table id="tablaVehiculos" class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr class="table-secondary">
+                    <th>Cedula</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Precio</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Vendedores.Cedula</td>
+                        <td>@item.Vendedores.Nombre</td>
+                        <td>@item.Marca</td>
+                        <td>@item.Modelo</td>
+                        <td>@item.Precio</td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script src="~/root/plugins/jquery/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#tablaVehiculos").DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/es-ES.json'
+            }
+        });
+    })
+</script>

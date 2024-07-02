@@ -1,0 +1,117 @@
+﻿@model Practica2.Entidades.Vehiculos
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Registro de Vehiculos";
+}
+
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <h3 class="card-title text-center">Registro de Vehiculos</h3>
+
+            @if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+            {
+                <div class="alert @ViewBag.AlertClass alert-dismissible fade show" role="alert">
+                    @ViewBag.Mensaje
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+
+            @using (Html.BeginForm("Vehiculos", "Home"))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="input-group mb-3">
+                    @Html.TextBoxFor(m => m.Marca, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @placeholder = "Marca",
+                    })
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-car"></span>
+                        </div>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(m => m.Marca, "", new { @class = "text-danger" })
+
+                <div class="input-group mb-3">
+                    @Html.TextBoxFor(m => m.Modelo, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @placeholder = "Modelo",
+                    })
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-car"></span>
+                        </div>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(m => m.Modelo, "", new { @class = "text-danger" })
+
+                <div class="input-group mb-3">
+                    @Html.TextBoxFor(m => m.Color, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @placeholder = "Color"
+                    })
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-paint-brush"></span>
+                        </div>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(m => m.Color, "", new { @class = "text-danger" })
+
+                <div class="input-group mb-3">
+                    @Html.TextBoxFor(m => m.Precio, new
+               {
+                   @type = "number",
+                   @class = "form-control",
+                   @placeholder = "Precio",
+                   @step = "0.001",
+                   @min = "0"
+               })
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-dollar-sign"></span>
+                        </div>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(m => m.Precio, "", new { @class = "text-danger" })
+
+                <div class="input-group mb-3">
+                    @Html.TextBoxFor(m => m.IdVendedor, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @placeholder = "Vendedor",
+                    })
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(m => m.IdVendedor, "", new { @class = "text-danger" })
+
+                <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar Vehiculo</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="~/root/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
